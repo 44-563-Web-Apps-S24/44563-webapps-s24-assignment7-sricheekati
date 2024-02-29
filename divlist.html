@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sri builds list with divs</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            background-color: red;
+        }
+
+        .flex-container>div {
+            /*div children of the flex container*/
+            background-color: #f1f1f1;
+            margin: 10px;
+            padding: 20px;
+            font-size: 30px;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .flex-container {
+                flex-direction: column;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1>Sri builds list with divs</h1>
+    <div class="flex-container" id="target">
+        <div> item 1</div>
+        <div> item 2</div>
+        <div> item 3</div>
+    </div>
+
+    <input type="text" id="input">
+
+    <button onclick="addEnd()">Add end</button>
+    <button onclick="addFront()">Add front</button>
+    <button onclick="remove()">Remove</button>
+
+
+
+</body>
+<script>
+    function addEnd() {
+        const input = document.getElementById('input');
+        const container = document.querySelector('.flex-container');
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = input.value;
+        newDiv.className = 'divlist';
+        container.appendChild(newDiv);
+    }
+    function addFront() {
+        const input = document.getElementById('input');
+        const container = document.querySelector('.flex-container');
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = input.value;
+        newDiv.className = 'divlist';
+        container.insertBefore(newDiv, container.firstChild);
+    }
+    function remove() {
+        const divListItems = document.getElementsByClassName('divlist');
+        if (divListItems.length > 0) {
+            const index = Math.floor(divListItems.length / 2);
+            divListItems[index].remove();
+        }
+    }
+
+
+</script>
+
+</html>
