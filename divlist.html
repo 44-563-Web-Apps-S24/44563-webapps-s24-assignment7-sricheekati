@@ -43,7 +43,7 @@
     <button onclick="addEnd()">Add end</button>
     <button onclick="addFront()">Add front</button>
     <button onclick="remove()">Remove</button>
-
+    <button onclick="swapItems()">Swap</button>
 
 
 </body>
@@ -71,7 +71,18 @@
             divListItems[index].remove();
         }
     }
+    function swapItems() {
+	        const divListItems = document.getElementsByClassName("divlist");
+	      	var index1 = Math.floor(Math.random() * divListItems.length);
+	     	var index2 = Math.floor(Math.random() * divListItems.length);
+	        while (index1 === index2) {
+	        	index2 = Math.floor(Math.random() * divListItems.length);
+	        }
 
+	        var temp = divListItems[index1];
+	        divListItems[index1].parentNode.insertBefore(divListItems[index2], divListItems[index1]);
+	        divListItems[index1].parentNode.insertBefore(temp, divListItems[index2].nextSibling);
+        }
 
 </script>
 
