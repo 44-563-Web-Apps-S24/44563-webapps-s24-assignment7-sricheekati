@@ -17,7 +17,7 @@
     <div id="target">Your time: </div>
     <div id="counter">Count: </div>
     <div id="stop-time"></div>
-    <button onclick="startTime()">Start Timer</button>
+    <button onclick="randomTimer()">Start Timer</button>
     <button onclick="recordTime()">Stop Timer</button>
 
 
@@ -61,6 +61,11 @@ document.addEventListener('click', function() {
   document.getElementById('stop-time').innerText = 'Stop time: ' + stopTime;
 });
 
+
+function randomTimer() {
+            const random = Math.floor(Math.random() * 9) + 2;
+            document.getElementById("random").innerText = random ;
+        }
   
     </script>
 
