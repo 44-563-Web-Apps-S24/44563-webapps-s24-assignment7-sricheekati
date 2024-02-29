@@ -74,7 +74,7 @@
         <div id="helpReport" class="alert alert-secondary" role="alert" style="display: none;">
             Help report
         </div>
-
+        <p><button class="btn btn-primary" onclick="newGame()">New Game</button></p>
         <!--<button type="button" class="btn btn-primary" onclick="showHelpReport()">Show Help Report</button>-->
         <div class="game">
             <div class="d-flex flex-row">
@@ -263,6 +263,24 @@
                 }
                 document.getElementById("help").onclick = help;
             }
+
+            function newGame() {
+                locations = 0;
+                score = 0;
+                monsterLocation = Math.floor(Math.random() * 35);
+                fancyCoinLocations = [];
+                while (fancyCoinLocations.length < 6) {
+                    const position = Math.floor(Math.random() * 35);
+                    if (!fancyCoinLocations.includes(position) && position !== monsterLocation) {
+                        fancyCoinLocations.push(position);
+                    }
+                }
+                gameOver = false;
+                document.getElementById("locations").textContent = "Number of locations checked is " + locations;
+                document.getElementById("score").textContent = "Score is " + score + ".";
+                document.getElementById("help").textContent = "Help report";
+            }
+
         </script>
 </body>
 
