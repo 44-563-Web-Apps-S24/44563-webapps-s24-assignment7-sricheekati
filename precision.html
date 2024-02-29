@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sri's speed check</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Sri's speed check</h1>
+    <div id="target">Your time: </div>
+    <div id="counter">Count: </div>
+    <div id="stop-time"></div>
+    <button onclick="startTime()">Start Timer</button>
+    <button onclick="recordTime()">Stop Timer</button>
+
+
+    <script>
+     let stopTime;
+
+function startTime() {
+
+  function updateCounter(i) {
+    document.getElementById('counter').innerHTML = i;
+  }
+
+  function checkElapsedTime() {
+    if (stopTime === undefined) {
+      document.getElementById('target').innerHTML = "Too Slow"; 
+    } else {
+      const elapsedTime = stopTime - Date.now() + 4000;
+      document.getElementById('target').innerHTML = "Time was " + elapsedTime + "ms";
+    }
+  }
+
+  for (let i = 0; i < 5; i++) {
+    setTimeout(function() {
+      updateCounter(i);
+    }, (4 - i) * 1000);
+  }
+
+  setTimeout(checkElapsedTime, 4000);
+
+}
+function recordTime() {
+    stopTime = Date.now();
+    console.log("Stop time:", stopTime);
+    //document.getElementById('stop-time').innerText = 'Stop time: ' + stopTime;
+  }
+
+  document.addEventListener('click', recordTime); 
+
+document.addEventListener('click', function() {
+  stopTime = Date.now();
+  document.getElementById('stop-time').innerText = 'Stop time: ' + stopTime;
+});
+
+  
+    </script>
+
+</body>
+
+</html>
